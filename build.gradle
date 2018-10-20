@@ -11,6 +11,7 @@ buildscript {
 }
 
 apply plugin: 'java'
+apply plugin: 'war'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
@@ -24,7 +25,14 @@ repositories {
 
 
 dependencies {
+
 	implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('javax.servlet:jstl')
+
+    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+    providedRuntime('org.apache.tomcat.embed:tomcat-embed-jasper')
+
 	runtimeOnly('org.springframework.boot:spring-boot-devtools')
+
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 }

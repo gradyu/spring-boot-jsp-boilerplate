@@ -13,29 +13,38 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.grady.jsp;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+package com.grady.jsp.index;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.grady.jsp.common.BaseController;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.ui.Model;
+import java.util.Date;
+
 
 /**
- * @brief:   Application 
+ * @brief:   Application index controller
  * @author:  Grady <yhwei876@gmail.com>
  * @file:    IndexController.java
  * @time:    2018-10-20
  * @version: 1.0.0
  */
-@SpringBootApplication
-public class JspApplication extends SpringBootServletInitializer {
 
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(JspApplication.class);
-    }
+@Controller
+public final class IndexController extends BaseController {
 
-    public static void main(String[] args) {
-        SpringApplication.run(JspApplication.class, args);
+    @Value("${application.message:Hello World!}")
+    private String message = "Hello world";
+
+    @GetMapping("/")
+    public String index(Model model) {
+        model.addAttribute("time", new Date());
+        model.addAttribute("message", message);
+        return "index";
     }
 }
+
