@@ -29,6 +29,8 @@ dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('javax.servlet:jstl')
 
+    implementation('org.webjars:bootstrap:3.3.7')
+
     providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
     providedRuntime('org.apache.tomcat.embed:tomcat-embed-jasper')
 
