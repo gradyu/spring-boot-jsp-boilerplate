@@ -1,0 +1,17 @@
+### 应用通用设置
+spring:
+  profiles:
+    active: dev
+---
+
+
+### 开发环境配置
+spring:
+  profiles: dev
+
+---
+
+
+### 生产环境配置
+spring:
+  profiles: pro
