@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-package com.grady.jsp.listener;
+package com.grady.jsp.common.listener;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
-import org.omg.CORBA.INITIALIZE;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
