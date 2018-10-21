@@ -17,17 +17,18 @@ package com.grady.jsp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Controller;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
 /**
- * @brief:   Application 
+ * @brief:   Application
  * @author:  Grady <yhwei876@gmail.com>
  * @file:    IndexController.java
  * @time:    2018-10-20
  * @version: 1.0.0
  */
+@ServletComponentScan
 @SpringBootApplication
 public class JspApplication extends SpringBootServletInitializer {
 
