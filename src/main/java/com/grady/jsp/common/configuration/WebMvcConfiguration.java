@@ -33,7 +33,7 @@ import com.grady.jsp.common.interceptor.SimpleInterceptor;
  */
 
 @Configuration
-public final class WebMvcConfiguration implements WebMvcConfigurer {
+public class WebMvcConfiguration implements WebMvcConfigurer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WebMvcConfiguration.class);
 
