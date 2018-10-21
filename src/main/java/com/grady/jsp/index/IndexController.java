@@ -17,9 +17,8 @@
 package com.grady.jsp.index;
 
 import java.util.Date;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 import com.grady.jsp.common.BaseController;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,10 +26,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 /**
- * @brief:   Application index controller
- * @author:  Grady <yhwei876@gmail.com>
- * @file:    IndexController.java
- * @time:    2018-10-20
+ * @brief: Application index controller
+ * @author: Grady <yhwei876@gmail.com>
+ * @file: IndexController.java
+ * @time: 2018-10-20
  * @version: 1.0.0
  */
 
@@ -45,6 +44,17 @@ public final class IndexController extends BaseController {
         model.addAttribute("time", new Date());
         model.addAttribute("message", message);
         return "index";
+    }
+
+    @GetMapping("/home")
+    public String home(Model model) {
+        return "main/home";
+    }
+
+    @GetMapping("/exception")
+    @ResponseBody
+    public String error() throws Exception {
+        throw new Exception();
     }
 }
 
