@@ -43,7 +43,7 @@ public final class SimpleSessionListener implements HttpSessionListener {
 
     @Override
     public void sessionDestroyed(HttpSessionEvent se) {
-        LOGGER.info("Session destory: {}", se.getSession().getId());
+        LOGGER.info("Session destroy: {}", se.getSession().getId());
 	}
 
     
