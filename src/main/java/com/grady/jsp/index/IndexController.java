@@ -17,13 +17,17 @@
 package com.grady.jsp.index;
 
 import java.util.Date;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.grady.jsp.common.BaseController;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @brief: Application index controller
@@ -35,6 +39,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public final class IndexController extends BaseController {
+
+    @Autowired
+    StringRedisTemplate redisTemplate;
 
     @Value("${application.message:Hello World!}")
     private String message = "Hello world";
@@ -56,5 +63,18 @@ public final class IndexController extends BaseController {
     public String error() throws Exception {
         throw new Exception();
     }
-}
 
+    @GetMapping("/set/{key}/{value}")
+    @ResponseBody
+    public String set(@PathVariable("key") String key, @PathVariable("value") String value) {
+        redisTemplate.opsForValue().set(key, value);
+        return "[" + key + ": " + value + "]";
+    }
+
+    @GetMapping("/get/{key}")
+    @ResponseBody
+    public String get(@PathVariable("key") String key) {
+        String value = redisTemplate.opsForValue().get(key);
+        return "[" + key + ": " + value + "]";
+    }
+}
